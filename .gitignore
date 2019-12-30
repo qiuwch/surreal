@@ -8,3 +8,7 @@ training/models/*.t7
 *.py[cod]
 __pycache__/
 *.oso
+*.swp
+.vscode/
+
+render.md
