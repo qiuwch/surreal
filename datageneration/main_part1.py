@@ -152,8 +152,8 @@ def create_composite_nodes(tree, params, img=None, idx=0):
     tree.links.new(mix.outputs[0], composite_out.inputs[0])            # bg+fg image
     if(params['output_types']['fg']):
         tree.links.new(layers.outputs['Image'], fg_out.inputs[0])      # save fg
-    if(params['output_types']['depth']):    
-        tree.links.new(layers.outputs['Z'], depth_out.inputs[0])       # save depth
+    # if(params['output_types']['depth']):    
+    #     tree.links.new(layers.outputs['Z'], depth_out.inputs[0])       # save depth
     if(params['output_types']['normal']):
         tree.links.new(layers.outputs['Normal'], normal_out.inputs[0]) # save normal
     if(params['output_types']['gtflow']):
@@ -521,9 +521,9 @@ def main():
     log_message("Listing background images")
     bg_names = join(bg_path, '%s_img.txt' % idx_info['use_split'])
     nh_txt_paths = []
-    with open(bg_names) as f:
-        for line in f:
-            nh_txt_paths.append(join(bg_path, line))
+    # with open(bg_names) as f:
+    #     for line in f:
+    #         nh_txt_paths.append(join(bg_path, line))
 
     # grab clothing names
     log_message("clothing: %s" % clothing_option)
@@ -542,8 +542,10 @@ def main():
     cloth_img = bpy.data.images.load(cloth_img_name)
 
     # random background
-    bg_img_name = choice(nh_txt_paths)[:-1]
-    bg_img = bpy.data.images.load(bg_img_name)
+    # bg_img_name = choice(nh_txt_paths)[:-1]
+    # bg_img = bpy.data.images.load(bg_img_name)
+    bg_img_name = ''
+    bg_img = None
 
     log_message("Loading parts segmentation")
     beta_stds = np.load(join(smpl_data_folder, ('%s_beta_stds.npy' % gender)))

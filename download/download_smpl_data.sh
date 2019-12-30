@@ -1,3 +1,4 @@
+set -x
 outdir=${1:-'/tmp'}
 username=${2:-'username'}
 password=${3:-'password'}
@@ -15,4 +16,4 @@ password=${3:-'password'}
 # Place smpl_data folder under the data generation code folder.
 # You can remove -q option to debug.
 
-wget --user=${username} --password=${password} -m -q -i files/files_smpl_data.txt --no-host-directories -P ${outdir}
+wget --user=${username} --password=${password} -m -i ./download/files/files_smpl_data.txt --no-host-directories -P ${outdir}
